@@ -1,4 +1,5 @@
 import 'package:design_iu/profile_screen.dart';
+import 'package:design_iu/shop/view/home_shop_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ProfileScreen(),
+      home: const HomePageScreen(),
     );
   }
 }
