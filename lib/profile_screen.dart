@@ -80,13 +80,13 @@ class ProfileScreen extends StatelessWidget {
             backgroundImage:
                 'https://scontent.fpnh18-2.fna.fbcdn.net/v/t39.30808-6/370041463_1096672014830844_8286648424760776003_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeEIKZe5rpk8GZ-691ivhZA6-kgILtlrcUz6SAgu2WtxTGxGjH7RjqkBqEgkWyowGHGg9IIOAm5HPpwcu5kTlAG7&_nc_ohc=l6AA7Jf8Mg8AX-Olhg5&_nc_zt=23&_nc_ht=scontent.fpnh18-2.fna&oh=00_AfCt1JpzcjzFDFr-LgczTo0jvspx38H2sJDQTRRCBrGgIQ&oe=657B02F7',
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(vertical: 10),
             child: Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
+                  children: const [
                     Text('4444'),
                     Text('3245'),
                     Text('0803'),
@@ -95,7 +95,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
+                  children: const [
                     Text('C Pro'),
                     Text('C++ '),
                     Text('C# Pro'),
