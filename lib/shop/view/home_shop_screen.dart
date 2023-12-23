@@ -110,12 +110,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
         },
         child: Stack(
           children: [
-            Hero(
-              tag: pro.name.toString(),
-              child: Column(
-                children: [
-                  Expanded(
-                      flex: 5,
+            Column(
+              children: [
+                Expanded(
+                    flex: 5,
+                    child: Hero(
+                      tag: pro.name.toString(),
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -123,63 +123,73 @@ class _HomePageScreenState extends State<HomePageScreen> {
                             image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: NetworkImage(pro.image.toString()))),
-                      )),
-                  Expanded(
-                    child: Container(
-                      height: 40,
-                      width: double.infinity,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(10),
-                            bottomRight: Radius.circular(10)),
-                        color: Colors.white,
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  pro.name!,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
-                                ),
-                                Text(
-                                  '\$ ${pro.price}',
-                                  style: const TextStyle(
-                                      fontSize: 15, color: Colors.red),
-                                )
-                              ],
-                            ),
-                            InkWell(
-                              onTap: () {
-                                setState(() {
+                    )),
+                Expanded(
+                  child: Container(
+                    height: 40,
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10)),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                pro.name!,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                              Text(
+                                '\$ ${pro.price}',
+                                style: const TextStyle(
+                                    fontSize: 15, color: Colors.red),
+                              )
+                            ],
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                if (cardList.isEmpty) {
                                   cardList.add(pro);
-                                });
-                              },
-                              child: const CircleAvatar(
-                                backgroundColor: Colors.yellow,
-                                maxRadius: 12,
-                                child: Center(
-                                  child: Icon(
-                                    Icons.add,
-                                    size: 15,
-                                    color: Colors.black,
-                                  ),
+                                } else {
+                                  int index = cardList.indexWhere(
+                                      (element) => element.id == pro.id);
+                                  if (index == -1) {
+                                    cardList.add(pro);
+                                  } else {
+                                    cardList[index].qty =
+                                        cardList[index].qty! + 1;
+                                  }
+                                }
+                              });
+                            },
+                            child: const CircleAvatar(
+                              backgroundColor: Colors.yellow,
+                              maxRadius: 12,
+                              child: Center(
+                                child: Icon(
+                                  Icons.add,
+                                  size: 15,
+                                  color: Colors.black,
                                 ),
                               ),
-                            )
-                          ],
-                        ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
             Positioned(
                 top: 5,
